@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 @injectable
 class GetCategoriesUseCase{
   CategoriesRepo categoriesRepo;
-  GetCategoriesUseCase(this.categoriesRepo);
+  GetCategoriesUseCase(this.categoriesRepo);// 100% we have the right object
   Future<List<Category>> invoke(){
     var categoriesList = categoriesRepo.getCategories();
     // logic
