@@ -1,4 +1,4 @@
-import 'Metadata.dart';
+import '../PaginationData.dart';
 import 'Category_dto.dart';
 
 /// results : 10
@@ -13,7 +13,7 @@ class CategoriesResponse {
 
   CategoriesResponse.fromJson(dynamic json) {
     results = json['results'];
-    metadata = json['metadata'] != null ? Metadata.fromJson(json['metadata']) : null;
+    metadata = json['metadata'] != null ? PaginationData.fromJson(json['metadata']) : null;
     if (json['data'] != null) {
       data = [];
       json['data'].forEach((v) {
@@ -22,7 +22,7 @@ class CategoriesResponse {
     }
   }
   num? results;
-  Metadata? metadata;
+  PaginationData? metadata;
   List<CategoryDto>? data;
 
   Map<String, dynamic> toJson() {
