@@ -3,6 +3,7 @@ import 'package:elevate_intake2_intro/domain/model/Brand.dart';
 import 'package:elevate_intake2_intro/domain/model/category.dart';
 import 'package:elevate_intake2_intro/ui/home/HomeViewModel.dart';
 import 'package:elevate_intake2_intro/ui/home/home_screen_state.dart';
+import 'package:elevate_intake2_intro/ui/utils/ErrorMessageHandler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -45,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 return BuildHomeSuccess(state);
               }
               case Status.error:{
-                return BuildHomeError();
+                return BuildHomeError(state);
               }
             }
           },
@@ -69,9 +70,11 @@ class _HomeScreenState extends State<HomeScreen> {
       child: CircularProgressIndicator(),
     );
   }
-  Widget BuildHomeError(){
+  Widget BuildHomeError(HomeScreenState state){
     return Center(
-      child: Text("Error"),
+      child: Text(
+          handleErrorMessage(state.exception,context)
+      ),
     );
   }
 

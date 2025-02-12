@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:elevate_intake2_intro/domain/common/Result.dart';
-import 'package:elevate_intake2_intro/domain/exceptions/ServerError.dart';
+import 'package:elevate_intake2_intro/domain/common/exceptions/ServerError.dart';
 import 'package:elevate_intake2_intro/domain/model/ErrorModel.dart';
 
 Future<Result<T>> executeApi<T>(Future<T> Function() apiCall)async{
