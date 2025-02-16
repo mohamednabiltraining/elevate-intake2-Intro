@@ -8,13 +8,15 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
 import '../api/datasourceimpl/brand/BrandsOnlineDatasourceImpl.dart' as _i989;
 import '../api/datasourceimpl/categories/CategoriesOnlineDatasourceImpl.dart'
     as _i303;
-import '../api/webServices/ApiClient.dart' as _i209;
+import '../api/di.dart' as _i691;
+import '../api/webServices/WebServices.dart' as _i394;
 import '../data/datasourceContracts/brands_data_source.dart' as _i118;
 import '../data/datasourceContracts/categories_data_source.dart' as _i178;
 import '../data/respositories/brands/brands_repo.dart' as _i653;
@@ -36,11 +38,16 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
-    gh.factory<_i209.ApiClient>(() => _i209.ApiClient());
-    gh.factory<_i118.BrandsOnlineDatasource>(
-        () => _i989.BrandsOnlineDatasourceImpl(gh<_i209.ApiClient>()));
+    final dioModule = _$DioModule();
+    gh.singleton<_i361.LogInterceptor>(() => dioModule.provideLogger());
+    gh.singleton<_i361.Dio>(
+        () => dioModule.provideDio(gh<_i361.LogInterceptor>()));
+    gh.singleton<_i394.WebServices>(
+        () => dioModule.provideWebServices(gh<_i361.Dio>()));
     gh.factory<_i178.CategoriesOnlineDataSource>(
-        () => _i303.CategoriesOnlineDataSourceImpl(gh<_i209.ApiClient>()));
+        () => _i303.CategoriesOnlineDataSourceImpl(gh<_i394.WebServices>()));
+    gh.factory<_i118.BrandsOnlineDatasource>(
+        () => _i989.BrandsOnlineDatasourceImpl(gh<_i394.WebServices>()));
     gh.factory<_i1012.CategoriesRepo>(
         () => _i984.CategoriesRepoImpl(gh<_i178.CategoriesOnlineDataSource>()));
     gh.factory<_i768.BrandsRepo>(
@@ -56,3 +63,5 @@ extension GetItInjectableX on _i174.GetIt {
     return this;
   }
 }
+
+class _$DioModule extends _i691.DioModule {}
