@@ -15,11 +15,12 @@ class PaginationData {
   }
   num? currentPage;
   num? numberOfPages;
-  num? limit;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['currentPage'] = currentPage;
+    map['numberOfPages'] = numberOfPages;
+    map['numberOfPages'] = numberOfPages;
     map['numberOfPages'] = numberOfPages;
     map['limit'] = limit;
     return map;

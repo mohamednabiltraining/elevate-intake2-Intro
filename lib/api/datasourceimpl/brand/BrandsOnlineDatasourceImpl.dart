@@ -15,6 +15,7 @@ class BrandsOnlineDatasourceImpl implements BrandsOnlineDatasource{
   Future<Result<List<Brand>>> getBrands() async{
     return executeApi<List<Brand>>(()async{
       var response = await client.getBrands();
+      response = await client.getBrands();
       var catsList = response?.map((brandDto) => brandDto.toBrand(),).toList() ?? [];
       return catsList;
     },);

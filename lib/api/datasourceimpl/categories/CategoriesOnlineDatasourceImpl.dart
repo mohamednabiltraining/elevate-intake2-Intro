@@ -13,6 +13,7 @@ class CategoriesOnlineDataSourceImpl implements CategoriesOnlineDataSource{
   Future<Result<List<Category>>> getCategories() async{
     return executeApi<List<Category>>(()async{
       var response = await client.getCategories();
+
       var catsList = response?.map((catDto) => catDto.toCategory(),).toList() ?? [];
       return catsList;
     },);

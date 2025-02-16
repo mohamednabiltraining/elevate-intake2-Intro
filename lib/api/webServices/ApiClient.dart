@@ -9,6 +9,7 @@ import 'package:injectable/injectable.dart';
 @injectable
 @Singleton()
 class ApiClient {
+
   var _dio = Dio(
     BaseOptions(
       connectTimeout: Duration(seconds: 60),

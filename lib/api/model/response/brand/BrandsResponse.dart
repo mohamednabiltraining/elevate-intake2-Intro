@@ -13,14 +13,7 @@ class BrandsResponse {
       this.data,});
 
   BrandsResponse.fromJson(dynamic json) {
-    results = json['results'];
-    metadata = json['metadata'] != null ? PaginationData.fromJson(json['metadata']) : null;
-    if (json['data'] != null) {
-      data = [];
-      json['data'].forEach((v) {
-        data?.add(BrandDto.fromJson(v));
-      });
-    }
+
   }
   num? results;
   PaginationData? metadata;
