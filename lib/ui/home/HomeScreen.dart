@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget BuildHomeError(HomeScreenState state){
     return Center(
       child: Text(
-          handleErrorMessage(state.exception,context)
+          extractErrorMessage(state.exception,context)
       ),
     );
   }
