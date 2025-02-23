@@ -4,6 +4,7 @@ import 'package:elevate_intake2_intro/api/model/response/brand/brands_response.d
 import 'package:elevate_intake2_intro/api/model/response/category/CategoriesResponse.dart';
 import 'package:elevate_intake2_intro/api/model/response/category/Category_dto.dart';
 import 'package:injectable/injectable.dart';
+import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
 part 'WebServices.g.dart';

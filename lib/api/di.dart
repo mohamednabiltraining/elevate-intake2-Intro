@@ -5,6 +5,7 @@ import 'package:injectable/injectable.dart';
 @module
 abstract class DioModule{
 
+  static const int connectionTimeOut = 60;
   @Singleton()
   LogInterceptor provideLogger(){
     return LogInterceptor();
@@ -13,7 +14,7 @@ abstract class DioModule{
   Dio provideDio(LogInterceptor logInterceptor){
     var dio = Dio(
         BaseOptions(
-          connectTimeout: Duration(seconds: 60),
+          connectTimeout: const Duration(seconds: connectionTimeOut),
           baseUrl: "https://ecommerce.routemisr.com/",
         )
     );
