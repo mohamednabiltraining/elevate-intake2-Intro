@@ -12,6 +12,9 @@ class CategoriesRepoImpl implements CategoriesRepo{
     var categories = _categoriesOnlineDataSource.getCategories();
     // Caching -> OnlineFirst => Api -> cache
     // offlineFirst -> offline -> online -> cache
+    var ob = (
+    name: ""
+    );
     return categories;
   }
 

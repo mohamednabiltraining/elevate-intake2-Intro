@@ -21,13 +21,16 @@ class HomeScreenState extends Equatable{
     this.loadingMessage,
     this.exception,
     this.categories,
-    this.brands});
+    this.brands,
+    this.navigationRoute,
+  });
 
   HomeScreenState copyWith({
     Status? status,
     String? loadingMessage,
     Exception? exception,
     List<Category>? categories,
+    String? navigationRoute,
   List<Brand>? brands}){
     return HomeScreenState(
       status: status ?? this.status,
@@ -35,6 +38,7 @@ class HomeScreenState extends Equatable{
       exception: exception ?? this.exception,
       categories: categories ?? this.categories,
       brands: brands ?? this.brands,
+      navigationRoute: navigationRoute ?? this.navigationRoute
     );
   }
 

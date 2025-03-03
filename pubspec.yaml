@@ -45,6 +45,8 @@ dependencies:
   retrofit: ^4.4.0
   logger: ^2.4.0  # for logging purpose
   json_annotation: ^4.9.0
+  mockito: ^5.4.5
+  bloc_test: ^10.0.0
 
 dev_dependencies:
   flutter_test:
